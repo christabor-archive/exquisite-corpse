@@ -1,4 +1,5 @@
 var exquistionCorpse = (function(){
+    "use strict";
 	// Rules:
 	// # Function must validate and be linted using at least default options
 	// # Function must use the previous commits function in some way (combinatory)
