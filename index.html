@@ -1,18 +1,20 @@
 <!doctype html>
 <html>
 <head>
-	<title>Exquisite Corpse JS game.</title>
+    <title>Exquisite Corpse JS game.</title>
 </head>
 <body>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	<script src="exquisite-corpse.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		if(!exquistionCorpse) {
-			return;
-		}
-		exquistionCorpse.init();
-	});
-	</script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/cupertino/jquery-ui.css" />
+    <script src="exquisite-corpse.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        if(!exquistionCorpse) {
+            return;
+        }
+        exquistionCorpse.init();
+    });
+    </script>
 </body>
 </html>
