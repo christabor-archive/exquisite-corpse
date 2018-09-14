@@ -15,6 +15,45 @@ var exquistionCorpse = (function(){
                 // this.letsGetThisPartyStarted('Woohoo, look at me!');
             },
 
+            /**
+             * This method shows the decisive question at the end of the game
+             * @param title The title of the question
+             * @param contentHTML The content of the question
+             * @param callback A simple old school callback to be called when you press the yes or no button. 
+             * If the callback returns true, then a funny "You win the game!" message is shown.
+             * @returns The jQuery UI dialog instance
+             * @author Javier "Ciberman" Mora <http://github.com/jhm-ciberman>
+             */
+            showFinalGameQuestion: function (title, contentHTML, callback) {
+                const that = this;
+                const content = document.createElement('div');
+                content.setAttribute('title', title);
+                content.innerHTML = contentHTML;
+                document.body.appendChild(content);
+
+                const dialog = $(content).dialog({
+                    modal: true,
+                    buttons: {
+                        "Yes": () => click(true),
+                        "No": () => click(false),
+                    }
+                });
+
+                function click(win) {
+                    dialog.dialog("close");
+                    if (callback(win)) {
+                        that.bouncyBouncy('You win the game!');
+                        const dialog = document.querySelector('.letsGetThisPartyStarted');
+                        dialog.setAttribute('title', "Congratulations!");
+                        $(dialog).dialog({
+                            modal: true,
+                            width: 500,
+                        });
+                    }
+                }
+                return dialog;
+            },
+
             bouncyBouncy: function(text) {
                 // author: Rob Smith, www.githhub.com/kormoc
                 this.letsGetThisPartyStarted(text);
@@ -43,10 +82,8 @@ var exquistionCorpse = (function(){
         },
         init: function() {
             if($) {
-                this.contrib.letsGetThisPartyStarted('Take me to Funky Town!');
-                this.contrib.bouncyBouncy('Boing Boing!');
-                // this.contrib.nextUp();
-                // etc...
+                // Replace this call with the function you write
+                this.contrib.showFinalGameQuestion('Are you sure?', 'For real are you sure?', (a) => a);
             }
         }
     };
